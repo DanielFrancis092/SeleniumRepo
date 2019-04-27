@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NoSuchWindowException;
@@ -93,6 +94,18 @@ public class SeleniumBase extends Reporter implements Browser, Element{
 		try {
 			ele.clear();
 			ele.sendKeys(data);
+			reportStep("The Data :"+data+" entered Successfully", "pass");
+		} catch (ElementNotInteractableException e) {
+			reportStep("The Element "+ele+" is not Interactable", "fail");
+			throw new RuntimeException();
+		}
+	}
+	
+	@Override
+	public void clearTypeAndClickTab(WebElement ele, String data) {
+		try {
+			ele.clear();
+			ele.sendKeys(data, Keys.TAB);
 			reportStep("The Data :"+data+" entered Successfully", "pass");
 		} catch (ElementNotInteractableException e) {
 			reportStep("The Element "+ele+" is not Interactable", "fail");

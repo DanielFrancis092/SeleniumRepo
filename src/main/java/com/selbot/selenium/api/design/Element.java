@@ -185,4 +185,14 @@ public interface Element {
 	 */
 	public boolean verifySelected(WebElement ele);
 	
+	/**
+	 * This method will clear and type the value in the given text field 
+	 * @param ele   - The Webelement (text field) in which the data to be entered
+	 * @param data  - The data to be sent to the webelement
+	 * @see locateElement method in Browser Class
+	 * @author Daniel - Infonovum
+	 * @throws ElementNotInteractable,IllegalArgumentException(throws if keysToSend is null)		 
+	 */
+	public void clearTypeAndClickTab(WebElement ele,String data);
+	
 }
